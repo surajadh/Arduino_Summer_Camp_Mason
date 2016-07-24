@@ -8,6 +8,8 @@ long lastDebounceTime = 0;
 long debounceDelay = 50;
 int buttonState;
 boolean stopwatchStopped = false;
+boolean clearStopWatch = false;
+long lastTimeButtonHit = 0;
 
 void setup() {
 
@@ -40,6 +42,10 @@ void loop() {
       buttonState = reading;
       
       if (buttonState == HIGH) {
+        if(millis() - lastTimeButtonHit < 2000) {
+          seconds = 0;
+        }
+        lastTimeButtonHit = millis();
         stopwatchStopped = !stopwatchStopped;
         timer = millis();
       }
