@@ -6,11 +6,14 @@ int led2Pin = 4;
 void setup() {
   pinMode(switchPin, INPUT);
   pinMode(led1Pin, OUTPUT);
-  pinMode(led2Pin, OUTPUT);
+//  pinMode(led2Pin, OUTPUT);
 }
 
 void loop() {
-  if(valueOfSwitch) {
+  valueOfSwitch = digitalRead(switchPin);
+//  digitalWrite(13, valueOfSwitch);
+  
+  if(valueOfSwitch == HIGH) {
     blinkLed1();
     turnOnLed2();  
   }
